@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ $title ?? '' }}</title>
+    <title>{{ $title ?? 't-shirt' }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('assets') }}/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/vendors/css/vendor.bundle.base.css">
@@ -20,10 +20,15 @@
         <!-- Navbar -->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a class="navbar-brand brand-logo" href="/"><img src="{{ asset('assets') }}/images/logo.svg"
-                        alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="/"><img
-                        src="{{ asset('assets') }}/images/logo-mini.svg" alt="logo" /></a>
+                <a class="navbar-brand brand-logo" href="/dashboard">
+                    <h3>
+                        <i class="mdi mdi-tshirt-crew menu-icon text-primary"></i>
+                        T-SHIRT
+                    </h3>
+                </a>
+                <a class="navbar-brand brand-logo-mini" href="/dashboard">
+                    <i class="mdi mdi-tshirt-crew menu-icon text-primary"></i>
+                </a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -40,60 +45,46 @@
             <!-- sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    {{-- <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
-                <div class="nav-profile-image">
-                  <img src="{{asset('assets')}}/images/faces/face1.jpg" alt="profile">
-                  <span class="login-status online"></span>
-                  <!--change to offline or busy as needed-->
-                </div>
-                <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">David Grey. H</span>
-                  <span class="text-secondary text-small">Project Manager</span>
-                </div>
-                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-              </a>
-            </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="/">
                             <span class="menu-title">Dashboard</span>
-                            <i class="mdi mdi-home menu-icon"></i>
+                            <i class="mdi  mdi-view-dashboard menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/kategori">
                             <span class="menu-title">Kategori produk</span>
-                            <i class="mdi mdi-home menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/expedisi">
-                            <span class="menu-title">Expedisi</span>
-                            <i class="mdi mdi-home menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/payment">
-                            <span class="menu-title">Pembayaran</span>
-                            <i class="mdi mdi-home menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user">
-                            <span class="menu-title">User</span>
-                            <i class="mdi mdi-home menu-icon"></i>
+                            <i class="mdi mdi-layers menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/produk">
                             <span class="menu-title">Produk</span>
-                            <i class="mdi mdi-home menu-icon"></i>
+                            <i class="mdi mdi-tshirt-crew menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/expedisi">
+                            <span class="menu-title">Expedisi</span>
+                            <i class="mdi mdi-truck-delivery menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/payment">
+                            <span class="menu-title">Pembayaran</span>
+                            <i class="mdi mdi-credit-card menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">
+                            <span class="menu-title">Akun</span>
+                            <i class="mdi mdi-account menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/pesanan">
                             <span class="menu-title">Pesanan</span>
-                            <i class="mdi mdi-home menu-icon"></i>
+                            <i class="mdi mdi-shopping menu-icon"></i>
                         </a>
                     </li>
                 </ul>

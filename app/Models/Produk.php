@@ -21,4 +21,8 @@ class Produk extends Model
         "size",
         "foto_produk"
     ];
+    public function JoinToKategoriProduk()
+    {
+        return $this->hasMany(KatProduk::class, 'id_kat_produk', 'id_kat_produk');
+    }
 }

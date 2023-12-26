@@ -11,8 +11,6 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Total pembayaran</th>
-                            <th>Waktu pembayaran</th>
                             <th>Metode pembayaran</th>
                             <th>Aksi</th>
                         </tr>
@@ -22,8 +20,6 @@
                         @foreach ($data as $row)
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>{{ $row->total_pembayaran }}</td>
-                                <td>{{ $row->waktu_pembayaran }}</td>
                                 <td>{{ $row->metode_pembayaran }}</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal"
@@ -42,4 +38,95 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal add-->
+    <div class="modal fade" id="modalTambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add {{ $title ?? '' }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/addpayment" class="forms-sample" method="post">
+                        @csrf
+                        <div class="form-group row">
+                            <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Metode pembayaran</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control form-control-sm"" name="metode_pembayaran"
+                                    id="exampleInputEmail2" placeholder="nama metode pembayran">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-gradient-warning me-2"
+                                data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-sm btn-gradient-success me-2"
+                                data-bs-dismiss="modal">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- end-modal pembayaran --}}
+
+    @foreach ($data as $val)
+        <!-- Modal update-->
+        <div class="modal fade" id="modalEdit{{ $val->id_pembayaran }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update {{ $title ?? '' }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/updatepayment" class="forms-sample" method="post">
+                            @csrf
+                            <div class="form-group row">
+                                <input type="hidden" name="id_pembayaran" value="{{ $val->id_pembayaran }}"
+                                    class="form-control form-control-sm">
+                                <label for="exampleInputEmail2" class="col-sm-4 col-form-label">Metode pembayaran</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control form-control-sm"" name="metode_pembayaran"
+                                        value="{{ $val->metode_pembayaran }}" id="exampleInputEmail2"
+                                        placeholder="nama metode pembayran">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-gradient-warning me-2"
+                                    data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-sm btn-gradient-success me-2"
+                                    data-bs-dismiss="modal">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- end-modal update --}}
+
+        <!-- Modal delete -->
+        <div class="modal fade" id="modalHapus{{ $val->id_pembayaran }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Hapus {{ $title ?? '' }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center">Yakin ingin menghapus data ini ..?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-gradient-warning me-2"
+                            data-bs-dismiss="modal">Cancel</button>
+                        <a href="/deletepayment/{{ $val->id_pembayaran }}"
+                            class="btn btn-sm btn-gradient-danger me-2">Hapus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- end-modal delete --}}
+    @endforeach
 @endsection

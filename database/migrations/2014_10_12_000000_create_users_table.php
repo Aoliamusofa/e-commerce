@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('jk', ['L', 'K']);
+            $table->enum('jk', ['L', 'P']);
             $table->char('tlp', 12);
             $table->string('alamat', 50);
             $table->enum('role', ["admin", "penjual", "pelanggan"])->default('pelanggan');

@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ExpedisiController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KatProdukController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PesananController;
@@ -19,12 +23,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
-Route::get('/testing', function () {
-    return view('testing');
-});
+Route::get('/', [HomeController::class, 'GetProduk']);
+Route::get('/detailproduk/{id}', [HomeController::class, 'DetailProduk']);
+
+Route::get('/login', [AuthController::class, 'LoginView']);
+Route::get('/register', [AuthController::class, 'RegisterView']);
+Route::post('/auth', [AuthController::class, 'LoginAuth']);
+Route::post('/registerpost', [AuthController::class, 'RegisterPost']);
+
+Route::get('/dashboard', [DashboardController::class, 'DataDashboard']);
 
 Route::get('/kategori', [KatProdukController::class, 'GetAllKategori']);
 Route::post('/addkategori', [KatProdukController::class, 'AddKategori']);
@@ -46,13 +53,14 @@ Route::get('/produk', [ProdukController::class, 'GetAllProduk']);
 Route::post('/addproduk', [ProdukController::class, 'AddProduk']);
 Route::post('/updateproduk', [ProdukController::class, 'UpdateProduk']);
 Route::get('/deleteproduk/{id}', [ProdukController::class, 'DeleteProduk']);
+// Route::get('/detail/{id}', [DetailController::class, 'DetailProduk']);
 
 Route::get('/pesanan', [PesananController::class, 'GetAllPesanan']);
 Route::post('/addpesanan', [PesananController::class, 'AddPesanan']);
 Route::post('/updatepesanan', [PesananController::class, 'UpdatePesanan']);
 Route::get('/deletepesanan/{id}', [PesananController::class, 'DeletePesanan']);
 
-Route::get('/user', [UserController::class, 'GetAllUser']);
+Route::get('/users', [UserController::class, 'GetAllUser']);
 Route::post('/adduser', [UserController::class, 'AddUser']);
 Route::post('/updateuser', [UserController::class, 'UpdateUser']);
 Route::get('/deleteuser/{id}', [UserController::class, 'DeleteUser']);
