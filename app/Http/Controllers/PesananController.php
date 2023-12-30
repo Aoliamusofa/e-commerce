@@ -18,6 +18,7 @@ class PesananController extends Controller
     }
     public function AddPesanan(Request $request)
     {
+        dd($request);
     }
     public function UpdatePesanan(Request $request)
     {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ExpedisiController;
@@ -27,11 +28,14 @@ Route::get('/', [HomeController::class, 'GetProduk']);
 Route::get('/detailproduk/{id}', [HomeController::class, 'DetailProduk']);
 
 Route::get('/login', [AuthController::class, 'LoginView']);
+Route::get('/logout', [AuthController::class, 'Logout']);
 Route::get('/register', [AuthController::class, 'RegisterView']);
 Route::post('/auth', [AuthController::class, 'LoginAuth']);
 Route::post('/registerpost', [AuthController::class, 'RegisterPost']);
 
 Route::get('/dashboard', [DashboardController::class, 'DataDashboard']);
+
+Route::get('/home', [ClientController::class, 'HomeClient']);
 
 Route::get('/kategori', [KatProdukController::class, 'GetAllKategori']);
 Route::post('/addkategori', [KatProdukController::class, 'AddKategori']);
@@ -53,10 +57,11 @@ Route::get('/produk', [ProdukController::class, 'GetAllProduk']);
 Route::post('/addproduk', [ProdukController::class, 'AddProduk']);
 Route::post('/updateproduk', [ProdukController::class, 'UpdateProduk']);
 Route::get('/deleteproduk/{id}', [ProdukController::class, 'DeleteProduk']);
-// Route::get('/detail/{id}', [DetailController::class, 'DetailProduk']);
+
+Route::get('/detail/{id}', [ClientController::class, 'DetailSebelumCekout']);
 
 Route::get('/pesanan', [PesananController::class, 'GetAllPesanan']);
-Route::post('/addpesanan', [PesananController::class, 'AddPesanan']);
+Route::post('/addpesanan', [PesananController::class, 'AddPesanan'])->name('addpesanan');
 Route::post('/updatepesanan', [PesananController::class, 'UpdatePesanan']);
 Route::get('/deletepesanan/{id}', [PesananController::class, 'DeletePesanan']);
 

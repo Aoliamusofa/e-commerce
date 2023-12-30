@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.ico" />
+    {{-- jquery 3.7.1 --}}
+    <script src="{{ asset('assets') }}/js/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -45,48 +47,75 @@
             <!-- sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">
-                            <span class="menu-title">Dashboard</span>
-                            <i class="mdi  mdi-view-dashboard menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/kategori">
-                            <span class="menu-title">Kategori produk</span>
-                            <i class="mdi mdi-layers menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/produk">
-                            <span class="menu-title">Produk</span>
-                            <i class="mdi mdi-tshirt-crew menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/expedisi">
-                            <span class="menu-title">Expedisi</span>
-                            <i class="mdi mdi-truck-delivery menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/payment">
-                            <span class="menu-title">Pembayaran</span>
-                            <i class="mdi mdi-credit-card menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/users">
-                            <span class="menu-title">Akun</span>
-                            <i class="mdi mdi-account menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pesanan">
-                            <span class="menu-title">Pesanan</span>
-                            <i class="mdi mdi-shopping menu-icon"></i>
-                        </a>
-                    </li>
+                    @if (Auth::user()->role == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                <span class="menu-title">Dashboard</span>
+                                <i class="mdi  mdi-view-dashboard menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/kategori">
+                                <span class="menu-title">Kategori produk</span>
+                                <i class="mdi mdi-layers menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/produk">
+                                <span class="menu-title">Produk</span>
+                                <i class="mdi mdi-tshirt-crew menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/expedisi">
+                                <span class="menu-title">Expedisi</span>
+                                <i class="mdi mdi-truck-delivery menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/payment">
+                                <span class="menu-title">Pembayaran</span>
+                                <i class="mdi mdi-credit-card menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users">
+                                <span class="menu-title">Akun</span>
+                                <i class="mdi mdi-account menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pesanan">
+                                <span class="menu-title">Pesanan</span>
+                                <i class="mdi mdi-shopping menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">
+                                <span class="menu-title">Logout</span>
+                                <i class="mdi mdi-logout menu-icon"></i>
+                            </a>
+                        </li>
+                    @elseif (Auth::user()->role == 'pelanggan')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home">
+                                <span class="menu-title">Produk</span>
+                                <i class="mdi mdi-tshirt-crew menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/pesanan">
+                                <span class="menu-title">Pesanan saya</span>
+                                <i class="mdi mdi-shopping menu-icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">
+                                <span class="menu-title">Logout</span>
+                                <i class="mdi mdi-logout menu-icon"></i>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </nav>
             {{-- end-sidebar --}}
@@ -111,6 +140,7 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+
     <!-- plugins:js -->
     <script src="{{ asset('assets') }}/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->

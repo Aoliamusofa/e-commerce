@@ -8,34 +8,37 @@
                 <div class="row">
                     <div class="col-6 mb-3">
                         <label class="form-label">Nama lengkap</label>
-                        <input type="text" name="nama" class="form-control form-control-sm" placeholder="nama lengkap">
+                        <input type="text" name="nama" class="form-control form-control-sm" placeholder="nama lengkap"
+                            autocomplete="off">
                     </div>
                     <div class="col-6 mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control form-control-sm"
-                            placeholder="alamat email">
+                        <input type="email" name="email" class="form-control form-control-sm" placeholder="alamat email"
+                            autocomplete="off">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control form-control-sm" placeholder="password">
+                        <input type="password" name="password" class="form-control form-control-sm" placeholder="password"
+                            autocomplete="off">
                     </div>
                     <div class="col-6 mb-3">
                         <label class="form-label">Jenis kelamin</label>
                         <input type="text" name="jk" class="form-control form-control-sm"
-                            placeholder="jenis kelamin">
+                            placeholder="jenis kelamin" autocomplete="off">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 mb-3">
                         <label class="form-label">Telepon</label>
-                        <input type="text" name="tlp" class="form-control form-control-sm" placeholder="telepon">
+                        <input type="text" name="tlp" class="form-control form-control-sm" placeholder="telepon"
+                            autocomplete="off">
                     </div>
                     <div class="col-6 mb-3">
                         <label class="form-label">Alamat lengkap</label>
                         <input type="text" name="alamat" class="form-control form-control-sm"
-                            placeholder="alamat lengkap">
+                            placeholder="alamat lengkap" autocomplete="off">
                     </div>
                 </div>
                 <div class="mt-3">
